@@ -15,8 +15,9 @@
 
                 <Image Grid.Row="0" Source="logo.png" WidthRequest="100" HeightRequest="100" Margin="0, 50, 0, 30"></Image>
                 <StackLayout Grid.Row="1" Padding="30,20">
-                    <Entry x:Name="emailText" Placeholder="Correo electrónico" PlaceholderColor="White"></Entry>
-                    <Entry x:Name="passwordText" Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True"></Entry>
+                    <Label x:Name="mensajeError" TextColor="Red" FontSize="20" Text="Datos inválidos." IsVisible="False"></Label>
+                    <Entry x:Name="emailText" Keyboard="Email" TextColor="White" Placeholder="Correo electrónico" PlaceholderColor="White"></Entry>
+                    <Entry x:Name="passwordText" TextColor="White" Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True"></Entry>
                     <Button x:Name="loginButton" Text="Iniciar sesión" BackgroundColor="White" BorderRadius="15" TextColor="#797D7F" Clicked="Button_OnClicked"></Button>
                 </StackLayout>
             </Grid>

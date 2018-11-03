@@ -31,10 +31,15 @@ namespace WappoMobile.Views
             string email = emailText.Text;
             string password = passwordText.Text;
             //bool loginExitoso = _usuarioService.Login(email, password);
-            bool loginExitoso = WappoMobile.Services.UsuarioService.ValidarLogin(email, password);
+            bool loginExitoso = await UsuarioService.ValidarLogin(email, password);
             if (loginExitoso)
             {
+                mensajeError.IsVisible = false;
                 await Navigation.PushAsync(new Views.MainPage()); //Redirigir a vista               
+            }
+            else
+            {
+                mensajeError.IsVisible = true;
             }
         }
     }
