@@ -22,6 +22,7 @@ namespace WappoMobile.UWP
             this.InitializeComponent();
 
             LoadApplication(new WappoMobile.App());
+            //Xamarin.FormsMaps.Init("Key de bing maps");
         }
     }
 }

@@ -11,7 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />  
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="3.3.0.967583" />  
   </ItemGroup>
 
   <ItemGroup>

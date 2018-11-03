@@ -1,12 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:WappoMobile.ViewModels;assembly=WappoMobile"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:behaviors="clr-namespace:WappoMobile.Contracts;assembly=WappoMobile.Contracts"
              x:Class="WappoMobile.Views.MapPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ContentPage.BindingContext>
+        <viewmodels:MapPageViewModel></viewmodels:MapPageViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <maps:Map x:Name="MapView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <maps:Map.Behaviors>
+                <behaviors:MapBehavior ItemsSource="{Binding Items}"></behaviors:MapBehavior>
+            </maps:Map.Behaviors>
+        </maps:Map>
+        <StackLayout Spacing="15" Padding="20" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+            <Button HorizontalOptions="EndAndExpand" VerticalOptions="Center" HeightRequest="50" Text="Street" Clicked="Street_OnClicked" />
+            <Button HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="50" Text="Hybrid" Clicked="Hybrid_OnClicked" />
+            <Button HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="50" Text="Satellite" Clicked="Satellite_OnClicked" />
         </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>
