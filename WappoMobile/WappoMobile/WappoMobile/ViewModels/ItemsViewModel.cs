@@ -14,6 +14,7 @@ namespace WappoMobile.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
+        private readonly IPedidosService _pedidosService = DependencyService.Get<IPedidosService>();
         //public ObservableCollection<Item> Items { get; set; }
         public ObservableCollection<PedidosMapa> Items { get; set; }
 
@@ -68,7 +69,7 @@ namespace WappoMobile.ViewModels
                 //    }
                 //};
 
-                var items = await WappoMobile.Services.PedidosServicio.ObtenerPedidos();
+                var items = await _pedidosService.ObtenerPedidos();
                 foreach (var item in items)
                 {
                     Items.Add(item);

@@ -4,7 +4,8 @@
              xmlns:viewmodels="clr-namespace:WappoMobile.ViewModels;assembly=WappoMobile"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:behaviors="clr-namespace:WappoMobile.Contracts;assembly=WappoMobile.Contracts"
-             x:Class="WappoMobile.Views.MapPage">
+             x:Class="WappoMobile.Views.MapPage"
+             Title="{Binding Title}">
     <ContentPage.BindingContext>
         <viewmodels:MapPageViewModel></viewmodels:MapPageViewModel>
     </ContentPage.BindingContext>

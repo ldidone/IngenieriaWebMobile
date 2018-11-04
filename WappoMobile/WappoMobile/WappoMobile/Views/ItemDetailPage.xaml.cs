@@ -34,5 +34,12 @@ namespace WappoMobile.Views
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
         }
+
+        private async void Button_OnClicked(object sender, EventArgs e)
+        {
+            var Email = App.Email;
+            var IdPedido = idPedido.Text;           
+            await Navigation.PushAsync(new Views.PostularsePage());                         
+        }
     }
 }

@@ -5,6 +5,7 @@
              Title="{Binding Title}">
     <ScrollView>
         <StackLayout Spacing="20" Padding="15">
+            <Label x:Name="idPedido" Text="{Binding Item.IdPedido}" IsVisible="False"/>
             <Label Text="Cliente:" FontSize="Medium" />
             <Label Text="{Binding Item.NombreCliente}" FontSize="Small"/>
             <Label Text="Descripción:" FontSize="Medium" />
@@ -19,6 +20,7 @@
             <Label Text="{Binding Item.Distancia}" FontSize="Small"/>
             <Label Text="Precio:" FontSize="Medium" />
             <Label Text="{Binding Item.Precio}" FontSize="Small"/>
+            <Button x:Name="postularseButton" Text="¡Postularse!" BackgroundColor="SteelBlue" BorderRadius="15" TextColor="White" Clicked="Button_OnClicked"></Button>
         </StackLayout>
     </ScrollView>
 </ContentPage>

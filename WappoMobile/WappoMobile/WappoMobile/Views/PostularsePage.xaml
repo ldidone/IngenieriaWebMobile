@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WappoMobile.Views.PostularsePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" Padding="30, 50">
+                <Entry x:Name="tiempoText" Keyboard="Numeric" Placeholder="Tiempo de transporte (min)"></Entry>
+                <Label x:Name="rangoPrecio" Text="Precio min: $ - Precio max: $" TextColor="Gray" FontSize="16"></Label>
+                <Entry x:Name="precioText" Keyboard="Numeric" Placeholder="Precio"></Entry>
+                <Button x:Name="postularseButton" Text="¡Postularse!" BackgroundColor="SteelBlue" BorderRadius="15" TextColor="White" Clicked="Button_OnClicked"></Button>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

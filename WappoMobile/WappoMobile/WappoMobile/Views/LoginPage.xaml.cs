@@ -30,8 +30,8 @@ namespace WappoMobile.Views
             App.Email = emailText.Text;
             string email = emailText.Text;
             string password = passwordText.Text;
-            //bool loginExitoso = await _usuarioService.Login(email, password); //Inyección de dependencias: ERROR
-            bool loginExitoso = await UsuarioService.ValidarLogin(email, password);
+            bool loginExitoso = await _usuarioService.Login(email, password); //Inyección de dependencias: ERROR
+            //bool loginExitoso = await UsuarioService.ValidarLogin(email, password);
             if (loginExitoso)
             {
                 mensajeError.IsVisible = false;

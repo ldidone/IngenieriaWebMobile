@@ -13,6 +13,13 @@ namespace WappoMobile
         {
             InitializeComponent();
 
+            //Registración de dependencias
+            //Usuario
+            DependencyAttribute usuarioDependecy = new DependencyAttribute(typeof(Contracts.IUsuarioService));
+            usuarioDependecy.Match(typeof(Services.UsuarioService));
+            //Pedidos
+            DependencyAttribute pedidosDependecy = new DependencyAttribute(typeof(Contracts.IPedidosService));
+            pedidosDependecy.Match(typeof(Services.PedidosService));
 
             //MainPage = new MainPage();
             SetMainPage();

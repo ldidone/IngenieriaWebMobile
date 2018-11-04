@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 using WappoMobile.Contracts;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Xamarin.Forms;
+using WappoMobile.Services;
 
+[assembly: Dependency(typeof(PedidosService))]
 namespace WappoMobile.Services
 {
-    public class PedidosServicio
+    public class PedidosService : IPedidosService
     {
-        public static async Task<List<PedidosMapa>> ObtenerPedidos()
+        public async Task<List<PedidosMapa>> ObtenerPedidos()
         {
             using (var httpClient = new HttpClient())
             {
