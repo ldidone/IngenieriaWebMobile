@@ -1,15 +1,15 @@
 ﻿using System;
-
+using WappoMobile.Contracts;
 using WappoMobile.Models;
 
 namespace WappoMobile.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public PedidosMapa Item { get; set; }
+        public ItemDetailViewModel(PedidosMapa item = null)
         {
-            Title = item?.Text;
+            Title = item?.DescripcionPedido;
             Item = item;
         }
     }

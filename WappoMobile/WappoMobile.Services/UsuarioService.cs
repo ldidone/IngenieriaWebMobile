@@ -13,21 +13,21 @@ namespace WappoMobile.Services
 {
     public class UsuarioService : IUsuarioService
     {
-        //public async Task<Boolean> Login(string email, string password)
-        //{
-        //    string url = "http://localhost:8080/api/news";
-        //    using (var httpClient = new HttpClient())
-        //    {
-        //        var response = await httpClient.GetStringAsync(url);
-        //        return JsonConvert.DeserializeObject<Boolean>(response);
-        //    }
-        //}
+        public async Task<bool> Login(string email, string password)
+        {
+            string url = "http://wappo.apphb.com/api/LoginApi/LoginValido?email=" + email + "&password=" + password;
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<bool>(response);
+            }
+        }
 
         //Prueba
-        public bool Login(string email, string password)
-        {
-            return true;
-        }
+        //public bool Login(string email, string password)
+        //{
+        //    return true;
+        //}
 
         public static async Task<bool> ValidarLogin(string email, string password)
         {

@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using WappoMobile.Models;
 using WappoMobile.ViewModels;
+using WappoMobile.Contracts;
 
 namespace WappoMobile.Views
 {
@@ -24,10 +25,10 @@ namespace WappoMobile.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new PedidosMapa
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                DescripcionPedido = "Descripción pedido",
+                NombreCliente = "Lucas Didoné"
             };
 
             viewModel = new ItemDetailViewModel(item);

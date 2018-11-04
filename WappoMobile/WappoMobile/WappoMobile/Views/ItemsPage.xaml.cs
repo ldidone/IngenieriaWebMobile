@@ -10,6 +10,8 @@ using Xamarin.Forms.Xaml;
 using WappoMobile.Models;
 using WappoMobile.Views;
 using WappoMobile.ViewModels;
+using System.Collections.ObjectModel;
+using WappoMobile.Contracts;
 
 namespace WappoMobile.Views
 {
@@ -27,7 +29,7 @@ namespace WappoMobile.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as PedidosMapa;
             if (item == null)
                 return;
 
@@ -45,7 +47,6 @@ namespace WappoMobile.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
