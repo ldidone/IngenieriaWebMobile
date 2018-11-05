@@ -33,21 +33,36 @@ namespace WappoMobile.Contracts
                 map.Pins.RemoveAt(i);
             }
 
-            var pins = ItemsSource.Select(x =>
+            var pinsOrigen = ItemsSource.Select(x =>
             {
                 var pin = new Pin
                 {
                     Type = PinType.Place,
                     Position = new Position(x.LatOrigen, x.LngOrigen),
-                    Label = x.DescripcionPedido,
+                    Label = x.DescripcionPedido + " (Origen)",
                     Address = x.DireccionOrigen,
-
                 };
 
                 pin.Clicked += PinOnClicked;
                 return pin;
             }).ToArray();
-            foreach (var pin in pins)
+            foreach (var pin in pinsOrigen)
+                map.Pins.Add(pin);
+
+            var pinsDestino = ItemsSource.Select(x =>
+            {
+                var pin = new Pin
+                {
+                    Type = PinType.Place,
+                    Position = new Position(x.LatDestino, x.LngDestino),
+                    Label = x.DescripcionPedido + " (Destino)",
+                    Address = x.DireccionDestino,
+                };
+
+                pin.Clicked += PinOnClicked;
+                return pin;
+            }).ToArray();
+            foreach (var pin in pinsDestino)
                 map.Pins.Add(pin);
         }
 
