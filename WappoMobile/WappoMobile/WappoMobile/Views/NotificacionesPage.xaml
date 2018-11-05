@@ -9,6 +9,9 @@
             ItemsSource="{Binding Items}"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="true"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
             <!--Built in Cells-->

@@ -2,43 +2,45 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WappoMobile.Contracts;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WappoMobile.ViewModels;
 
 namespace WappoMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotificacionesPage : ContentPage
     {
-        private readonly INotificacionesService _notificacionesService = DependencyService.Get<INotificacionesService>();
-
-        public ObservableCollection<Notificacion> Items { get; set; }
+        NotificacionesViewModel viewModel;
+        
         public NotificacionesPage()
         {
             InitializeComponent();
 
-            ObtenerNotificaciones();
-            Title = "Notificaciones";           
+            BindingContext = viewModel = new NotificacionesViewModel();
         }
-
-        async void ObtenerNotificaciones()
+  
+        async void Handle_ItemTapped(object sender, SelectedItemChangedEventArgs args)
         {
-            Items = await _notificacionesService.ObtenerPedidos(App.Email);
-            MyListView.ItemsSource = Items;
-        }
-
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item == null)
+            var item = args.SelectedItem as Notificacion;
+            if (item == null)
                 return;
 
-            await DisplayAlert("Notificación", "¡Postulación aceptada!", "OK");
+            await DisplayAlert("¡Postulación aceptada!", "¡Su postulación a " + item.DescripcionPedido + " ha sido aceptada!" , "OK");
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (viewModel.Items.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }
