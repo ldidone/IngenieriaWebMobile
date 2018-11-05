@@ -39,7 +39,9 @@ namespace WappoMobile.Views
         {
             string Email = App.Email;
             int IdPedido = Convert.ToInt32(idPedido.Text);
-            PostulacionViewModel postulacionViewModel = new PostulacionViewModel(Email, IdPedido);
+            decimal PrecioMinimo = viewModel.Item.PrecioMinimo;
+            decimal PrecioMaximo = viewModel.Item.PrecioMaximo;
+            PostulacionViewModel postulacionViewModel = new PostulacionViewModel(Email, IdPedido, PrecioMinimo, PrecioMaximo);
             await Navigation.PushAsync(new Views.PostularsePage(postulacionViewModel));                         
         }
     }

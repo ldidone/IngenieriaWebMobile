@@ -18,5 +18,13 @@ namespace WappoMobile.Contracts
         public double LatOrigen { get; set; }
         public double LngOrigen { get; set; }
         public bool Postulado { get; set; }
+        public decimal PrecioMinimo { get; set; }
+        public decimal PrecioMaximo { get; set; }
+
+        public PedidosMapa()
+        {
+            PrecioMinimo = 0;
+            PrecioMaximo = 0;
+        }
     }
 }

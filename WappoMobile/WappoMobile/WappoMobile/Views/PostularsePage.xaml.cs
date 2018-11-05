@@ -17,14 +17,16 @@ namespace WappoMobile.Views
 
         PostulacionViewModel postulacionViewModel;
 
-		public PostularsePage (PostulacionViewModel viewModel)
+        private readonly decimal _precioMinimo;
+        private readonly decimal _precioMaximo;
+
+        public PostularsePage (PostulacionViewModel viewModel)
 		{
 			InitializeComponent ();
-            int precioMin = 20;
-            int precioMax = 50;
-            rangoPrecio.Text = "Precio min: $" + precioMin + "- Precio max: $" + precioMax;
-            BindingContext = this.postulacionViewModel = viewModel;
-
+            _precioMinimo = viewModel.PrecioMinimo;
+            _precioMaximo = viewModel.PrecioMaximo;
+            rangoPrecio.Text = "Precio min: $" + _precioMinimo + "- Precio max: $" + _precioMaximo;
+            BindingContext = this.postulacionViewModel = viewModel;            
         }
 
         private async void Button_OnClicked(object sender, EventArgs e)
@@ -33,26 +35,34 @@ namespace WappoMobile.Views
             decimal precio = Convert.ToDecimal(precioText.Text);
             string email = postulacionViewModel.EmailUsuario;
             int idPedido = postulacionViewModel.IdPedido;
-            Postulacion postulacion = new Postulacion()
+            if (precio >= _precioMinimo && precio <= _precioMaximo)
             {
-                EmailUsuario = email,
-                IdPedido = idPedido,
-                Tiempo = tiempo,
-                Precio = precio
-            };
+                Postulacion postulacion = new Postulacion()
+                {
+                    EmailUsuario = email,
+                    IdPedido = idPedido,
+                    Tiempo = tiempo,
+                    Precio = precio
+                };
 
-            bool postulacionCorrecta = await _postulacionService.Postularse(postulacion);
-            if (postulacionCorrecta)
-            {
-                await Navigation.PushAsync(new Views.PostulacionCorrectaPage()); 
-                //await DisplayAlert("Postulación", "¡Postulación correcta!", "Aceptar");
+                bool postulacionCorrecta = await _postulacionService.Postularse(postulacion);
+                if (postulacionCorrecta)
+                {
+                    await Navigation.PushAsync(new Views.PostulacionCorrectaPage());
+                    //await DisplayAlert("Postulación", "¡Postulación correcta!", "Aceptar");
+                }
+                else
+                {
+                    await Navigation.PushAsync(new Views.PostulacionIncorrectaPage());
+                    //await DisplayAlert("Postulación", "Postulación incorrecta", "Aceptar");
+                }
+                //await Navigation.PushAsync(new Views.MainPage()); //Aparece doble la parte superior
             }
             else
             {
-                await Navigation.PushAsync(new Views.PostulacionIncorrectaPage());
-                //await DisplayAlert("Postulación", "Postulación incorrecta", "Aceptar");
+                await DisplayAlert("Precio", "El precio no se encuentra dentro del rango válido.", "Aceptar");
             }
-            //await Navigation.PushAsync(new Views.MainPage()); //Aparece doble la parte superior
+
         }
     }
 }

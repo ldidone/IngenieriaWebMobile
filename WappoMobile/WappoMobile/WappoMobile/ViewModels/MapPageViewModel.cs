@@ -31,39 +31,7 @@ namespace WappoMobile.ViewModels
 
         private async void Init()
         {
-            Items =  await _pedidosService.ObtenerPedidos(); //Acá irian los pedidos asignados
-            //Items = new List<PedidosMapa>
-            //{
-            //    new PedidosMapa
-            //    {
-            //        IdPedido = 1,
-            //        DescripcionPedido = "Empanadas",
-            //        NombreCliente = "Lucas Didoné",
-            //        LatOrigen = 13.6946923,
-            //        LngOrigen = -89.2414103,
-            //        DireccionDestino = "Dirección"
-            //    },
-
-            //    new PedidosMapa
-            //    {
-            //        IdPedido = 2,
-            //        DescripcionPedido = "Pizza",
-            //        NombreCliente = "Lucas Didoné",
-            //        LatOrigen = 13.703869,
-            //        LngOrigen = -89.248569,
-            //        DireccionDestino = "Dirección"
-            //    },
-
-            //    new PedidosMapa
-            //    {
-            //        IdPedido = 3,
-            //        DescripcionPedido = "Milanesa",
-            //        NombreCliente = "Lucas Didoné",
-            //        LatOrigen = 13.67534,
-            //        LngOrigen = -89.2868771,
-            //        DireccionDestino = "Dirección"
-            //    }              
-            //};
+            Items =  await _pedidosService.ObtenerPedidos(); 
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
