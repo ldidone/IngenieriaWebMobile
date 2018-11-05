@@ -46,29 +46,6 @@ namespace WappoMobile.ViewModels
             try
             {
                 Items.Clear();
-                //var items = await DataStore.GetItemsAsync(true); //Obtener Pedidos de API
-                //var items = new List<PedidosMapa>()
-                //{
-                //    new PedidosMapa()
-                //    {
-                //        IdPedido = 1,
-                //        IdCliente = "asd",
-                //        NombreCliente = "Lucas",
-                //        DescripcionPedido = "Pizza",
-                //        ObservacionesPedido = "Ninguna",
-                //        Precio = 150
-                //    },
-                //    new PedidosMapa()
-                //    {
-                //        IdPedido = 2,
-                //        IdCliente = "asd",
-                //        NombreCliente = "Juan",
-                //        DescripcionPedido = "Papas fritas",
-                //        ObservacionesPedido = "Ninguna",
-                //        Precio = 50
-                //    }
-                //};
-
                 var items = await _pedidosService.ObtenerPedidos();
                 foreach (var item in items)
                 {

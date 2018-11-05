@@ -19,7 +19,7 @@ namespace WappoMobile.Views
             MapView.MoveToRegion(
                 MapSpan.FromCenterAndRadius(
                     new Position(-31.2526564, -61.4938347), Distance.FromMiles(0.4)));
-            Title = "Pedidos cercanos";
+            Title = "Pedidos asignados";
         }
 
         private void Street_OnClicked(object sender, EventArgs e)

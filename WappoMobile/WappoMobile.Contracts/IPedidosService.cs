@@ -8,5 +8,6 @@ namespace WappoMobile.Contracts
     public interface IPedidosService
     {
         Task<List<PedidosMapa>> ObtenerPedidos();
+        Task<List<PedidosMapa>> ObtenerPedidosAsignados(string emailDelivery);
     }
 }

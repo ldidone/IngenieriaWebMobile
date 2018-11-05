@@ -22,5 +22,15 @@ namespace WappoMobile.Services
                 return JsonConvert.DeserializeObject<List<PedidosMapa>>(response);
             }
         }
+
+        public async Task<List<PedidosMapa>> ObtenerPedidosAsignados(string emailDelivery)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                string url = "http://wappo.apphb.com/api/PedidosApi/ObtenerAsignados?emailDelivery=" + emailDelivery;
+                var response = await httpClient.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<List<PedidosMapa>>(response);
+            }
+        }
     }
 }
