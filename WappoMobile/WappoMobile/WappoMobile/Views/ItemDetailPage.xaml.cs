@@ -37,9 +37,10 @@ namespace WappoMobile.Views
 
         private async void Button_OnClicked(object sender, EventArgs e)
         {
-            var Email = App.Email;
-            var IdPedido = idPedido.Text;           
-            await Navigation.PushAsync(new Views.PostularsePage());                         
+            string Email = App.Email;
+            int IdPedido = Convert.ToInt32(idPedido.Text);
+            PostulacionViewModel postulacionViewModel = new PostulacionViewModel(Email, IdPedido);
+            await Navigation.PushAsync(new Views.PostularsePage(postulacionViewModel));                         
         }
     }
 }

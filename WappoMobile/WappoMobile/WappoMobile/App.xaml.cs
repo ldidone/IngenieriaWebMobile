@@ -20,7 +20,9 @@ namespace WappoMobile
             //Pedidos
             DependencyAttribute pedidosDependecy = new DependencyAttribute(typeof(Contracts.IPedidosService));
             pedidosDependecy.Match(typeof(Services.PedidosService));
-
+            //Postulación
+            DependencyAttribute postulacionDependecy = new DependencyAttribute(typeof(Contracts.IPostulacionService));
+            postulacionDependecy.Match(typeof(Services.PostulacionService));
             //MainPage = new MainPage();
             SetMainPage();
         }
