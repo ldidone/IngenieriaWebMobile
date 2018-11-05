@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WappoMobile.Views.NotificacionesPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="true"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement">
+            <!--Built in Cells-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Descripcion}" 
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemTextStyle}"
+                        FontSize="16" />
+                                <Label Text="{Binding DescripcionPedido}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemDetailTextStyle}" 
+                        FontSize="13" />
+                                <Label Text="{Binding ObservacionPedido}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemDetailTextStyle}" 
+                        FontSize="13" />
+                                <Label Text="{Binding NombreCliente}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemDetailTextStyle}" 
+                        FontSize="13" />
+                                <Label Text="{Binding DireccionOrigen}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemDetailTextStyle}" 
+                        FontSize="13" />
+                                <Label Text="{Binding DireccionDestino}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemDetailTextStyle}" 
+                        FontSize="13" />
+                                <Label Text="{Binding Precio}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemDetailTextStyle}" 
+                        FontSize="13" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
