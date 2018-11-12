@@ -9,6 +9,7 @@ namespace WappoMobile
     public partial class App : Application
     {
         public static string Email { get; set; }
+        public static string JWT { get; set; }
         public App()
         {
             InitializeComponent();

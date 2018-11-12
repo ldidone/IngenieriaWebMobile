@@ -30,10 +30,12 @@ namespace WappoMobile.Views
             App.Email = emailText.Text;
             string email = emailText.Text;
             string password = passwordText.Text;
-            bool loginExitoso = await _usuarioService.Login(email, password); //Inyección de dependencias: ERROR
+            string JWT = await _usuarioService.Login(email, password);
+            bool loginExitoso = JWT != null ? true : false;
             //bool loginExitoso = await UsuarioService.ValidarLogin(email, password);
             if (loginExitoso)
             {
+                App.JWT = JWT; //Seteo el JsonWebToken
                 mensajeError.IsVisible = false;
                 await Navigation.PushAsync(new Views.MainPage()); //Redirigir a vista               
             }

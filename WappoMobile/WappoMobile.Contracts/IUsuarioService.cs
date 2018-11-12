@@ -7,7 +7,7 @@ namespace WappoMobile.Contracts
 {
     public interface IUsuarioService
     {
-        Task<bool> Login(string email, string password);
+        Task<string> Login(string email, string password);
         //bool Login(string email, string password);
     }
 }
