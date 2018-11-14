@@ -28,6 +28,9 @@ namespace WappoMobile
             //Notificaciones
             DependencyAttribute notificacionesDependecy = new DependencyAttribute(typeof(Contracts.INotificacionesService));
             notificacionesDependecy.Match(typeof(Services.NotificacionesService));
+            //Localización
+            DependencyAttribute localizacionDependecy = new DependencyAttribute(typeof(Contracts.ILocalizacionService));
+            localizacionDependecy.Match(typeof(Services.LocalizacionService));
             //MainPage = new MainPage();
             SetMainPage();
         }

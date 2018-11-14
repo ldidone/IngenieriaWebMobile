@@ -16,8 +16,9 @@ namespace WappoMobile.Services
         public async Task<List<PedidosMapa>> ObtenerPedidos()
         {
             using (var httpClient = new HttpClient())
-            {              
-                string url = "http://wappo.apphb.com/api/PedidosApi/ObtenerPendientes/";
+            {
+                //string url = "http://wappo.apphb.com/api/PedidosApi/ObtenerPendientes/";
+                string url = "http://wappo.apphb.com/api/pedidos/obtenerpendientes/";
                 //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "ew0KICAiYWxnIjogIkhTMjU2IiwNCiAgInR5cCI6ICJKV1QiDQp9.ew0KICAidW5pcXVlX25hbWUiOiAibHVjYXMuY3JhcjE0QGdtYWlsLmNvbSIsDQogICJuYmYiOiAxNTQyMDQ5NTU3LA0KICAiZXhwIjogMTMwMzkxMDY4Mzc3LA0KICAiaWF0IjogMTU0MjA0OTU1OCwNCiAgImlzcyI6ICJodHRwOi8vbG9jYWxob3N0OjEyNzc4IiwNCiAgImF1ZCI6ICJodHRwOi8vbG9jYWxob3N0OjEyNzc4Ig0KfQ.nyLz9FL-cggm5ARX2skSZqRTj2ek8Zfbpsoj1StUnoQ");
                 var response = await httpClient.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<List<PedidosMapa>>(response);
@@ -28,7 +29,8 @@ namespace WappoMobile.Services
         {
             using (var httpClient = new HttpClient())
             {
-                string url = "http://wappo.apphb.com/api/PedidosApi/ObtenerAsignados?emailDelivery=" + emailDelivery;
+                //string url = "http://wappo.apphb.com/api/PedidosApi/ObtenerAsignados?emailDelivery=" + emailDelivery;
+                string url = "http://wappo.apphb.com/api/pedidos/obtenerasignados?emailDelivery=" + emailDelivery;
                 //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "ew0KICAiYWxnIjogIkhTMjU2IiwNCiAgInR5cCI6ICJKV1QiDQp9.ew0KICAidW5pcXVlX25hbWUiOiAibHVjYXMuY3JhcjE0QGdtYWlsLmNvbSIsDQogICJuYmYiOiAxNTQyMDQ5NTU3LA0KICAiZXhwIjogMTMwMzkxMDY4Mzc3LA0KICAiaWF0IjogMTU0MjA0OTU1OCwNCiAgImlzcyI6ICJodHRwOi8vbG9jYWxob3N0OjEyNzc4IiwNCiAgImF1ZCI6ICJodHRwOi8vbG9jYWxob3N0OjEyNzc4Ig0KfQ.nyLz9FL-cggm5ARX2skSZqRTj2ek8Zfbpsoj1StUnoQ");
                 var response = await httpClient.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<List<PedidosMapa>>(response);

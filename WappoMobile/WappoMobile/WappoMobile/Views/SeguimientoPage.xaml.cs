@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using WappoMobile.Contracts;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +15,9 @@ namespace WappoMobile.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SeguimientoPage : ContentPage
 	{
-		public SeguimientoPage ()
+        private readonly ILocalizacionService _localizacionService = DependencyService.Get<ILocalizacionService>();
+
+        public SeguimientoPage ()
 		{
 			InitializeComponent ();
 		}
@@ -41,6 +43,13 @@ namespace WappoMobile.Views
                 if (status == PermissionStatus.Granted)
                 {
                     var results = await CrossGeolocator.Current.GetPositionAsync(new TimeSpan(1, 0, 0));
+                    Coordenada coordenada = new Coordenada()
+                    {
+                        Email = App.Email,
+                        Lat = results.Latitude,
+                        Lng = results.Longitude
+                    };
+                    _localizacionService.EnviarCoordenada(coordenada); //Enviar la coordenada
                     await DisplayAlert("Seguimiento activado", "El seguimiento ha sido activado correctamente.", "OK");
                     if (!CrossGeolocator.Current.IsListening)
                     {
@@ -50,6 +59,13 @@ namespace WappoMobile.Views
                     CrossGeolocator.Current.PositionChanged += (cambio, args) =>
                     {
                         var loc = args.Position;
+                        Coordenada coord = new Coordenada()
+                        {
+                            Email = App.Email,
+                            Lat = loc.Latitude,
+                            Lng = loc.Longitude
+                        };
+                        _localizacionService.EnviarCoordenada(coord); //Enviar la coordenada
                     };
                     
                 }
