@@ -37,9 +37,12 @@ namespace WappoMobile.Views
             int idPedido = postulacionViewModel.IdPedido;
             if (precio >= _precioMinimo && precio <= _precioMaximo)
             {
+                string JWT = App.JWT;
+                JWT = JWT.Trim('\\', '"');
                 Postulacion postulacion = new Postulacion()
                 {
                     EmailUsuario = email,
+                    JWT = JWT,
                     IdPedido = idPedido,
                     Tiempo = tiempo,
                     Precio = precio
