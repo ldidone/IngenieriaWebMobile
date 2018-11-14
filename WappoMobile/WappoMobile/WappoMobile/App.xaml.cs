@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Geolocator;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WappoMobile.Views;

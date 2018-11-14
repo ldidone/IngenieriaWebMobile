@@ -6,13 +6,13 @@ namespace WappoMobile.Contracts
 {
     public class LoginRequest
     {
-        public LoginRequest(string email, string password)
+        public LoginRequest(string username, string password)
         {
-            Email = email;
+            Username = username;
             Password = password;
         }
 
-        public string Email { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
     }
 }

@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.CurrentActivity;
+using Plugin.Permissions;
+using Xamarin.Forms.Platform.Android;
 
 namespace WappoMobile.Droid
 {
@@ -18,9 +21,18 @@ namespace WappoMobile.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            Xamarin.FormsMaps.Init(this, savedInstanceState);
+            Xamarin.FormsMaps.Init(this, savedInstanceState);           
             LoadApplication(new App());
+        }
+
+        /*GEOLOCALIZACIÓN*/
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

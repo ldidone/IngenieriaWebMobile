@@ -4,7 +4,7 @@
             xmlns:views="clr-namespace:WappoMobile.Views"
             x:Class="WappoMobile.Views.MainPage">
     <TabbedPage.Children>
-        <NavigationPage Title="Pedidos">
+        <!--<NavigationPage Title="Pedidos">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
@@ -34,6 +34,17 @@
             </NavigationPage.Icon>
             <x:Arguments>
                 <views:MapPage />
+            </x:Arguments>
+        </NavigationPage>-->
+
+        <NavigationPage Title="Seguimiento">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:SeguimientoPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

@@ -37,6 +37,7 @@ namespace WappoMobile.Views
             {
                 App.JWT = JWT; //Seteo el JsonWebToken
                 mensajeError.IsVisible = false;
+
                 await Navigation.PushAsync(new Views.MainPage()); //Redirigir a vista               
             }
             else
