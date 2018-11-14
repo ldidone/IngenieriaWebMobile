@@ -26,7 +26,7 @@ namespace WappoMobile.ViewModels
 
         async void ObtenerNotificaciones()
         {
-            Items = await _notificacionesService.ObtenerPedidos(App.Email);
+            Items = await _notificacionesService.ObtenerPedidos(App.Email, App.JWT);
             //MyListView.ItemsSource = Items;
         }
 
@@ -40,7 +40,7 @@ namespace WappoMobile.ViewModels
             try
             {
                 Items.Clear();
-                var items = await _notificacionesService.ObtenerPedidos(App.Email);
+                var items = await _notificacionesService.ObtenerPedidos(App.Email, App.JWT);
                 foreach (var item in items)
                 {
                     Items.Add(item);

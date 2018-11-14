@@ -8,6 +8,6 @@ namespace WappoMobile.Contracts
 {
     public interface INotificacionesService
     {
-        Task<ObservableCollection<Notificacion>> ObtenerPedidos(string emailUsuario);
+        Task<ObservableCollection<Notificacion>> ObtenerPedidos(string emailUsuario, string JWT);
     }
 }

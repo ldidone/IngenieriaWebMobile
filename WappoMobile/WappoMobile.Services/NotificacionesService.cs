@@ -14,11 +14,12 @@ namespace WappoMobile.Services
 {
     public class NotificacionesService : INotificacionesService
     {
-        public async Task<ObservableCollection<Notificacion>> ObtenerPedidos(string emailUsuario)
+        public async Task<ObservableCollection<Notificacion>> ObtenerPedidos(string emailUsuario, string JWT)
         {
             using (var httpClient = new HttpClient())
             {
-                string url = "http://wappo.apphb.com/api/NotificacionesApi/ObtenerPostulacionesAceptadas?emailUsuario=" + emailUsuario;
+                JWT = JWT.Trim('\\', '"'); //Quito los caracteres de escape del token
+                string url = "http://wappo.apphb.com/api/NotificacionesApi/ObtenerPostulacionesAceptadas?emailUsuario=" + emailUsuario + "&JWT=" + JWT;
                 var response = await httpClient.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<ObservableCollection<Notificacion>>(response);
             }
