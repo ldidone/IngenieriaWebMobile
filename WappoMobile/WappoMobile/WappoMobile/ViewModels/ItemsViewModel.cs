@@ -46,7 +46,7 @@ namespace WappoMobile.ViewModels
             try
             {
                 Items.Clear();
-                var items = await _pedidosService.ObtenerPedidos();
+                var items = await _pedidosService.ObtenerPedidos(App.Email, App.JWT);
                 foreach (var item in items)
                 {
                     Items.Add(item);

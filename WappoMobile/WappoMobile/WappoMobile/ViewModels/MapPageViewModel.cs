@@ -31,7 +31,7 @@ namespace WappoMobile.ViewModels
 
         private async void Init()
         {
-            Items = await _pedidosService.ObtenerPedidosAsignados(App.Email);
+            Items = await _pedidosService.ObtenerPedidosAsignados(App.Email, App.JWT);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
