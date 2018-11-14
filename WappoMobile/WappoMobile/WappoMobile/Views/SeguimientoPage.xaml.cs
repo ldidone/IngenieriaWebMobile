@@ -43,9 +43,12 @@ namespace WappoMobile.Views
                 if (status == PermissionStatus.Granted)
                 {
                     var results = await CrossGeolocator.Current.GetPositionAsync(new TimeSpan(1, 0, 0));
+                    string JWT = App.JWT;
+                    JWT = JWT.Trim('\\', '"'); //Quito los caracteres de escape del token
                     Coordenada coordenada = new Coordenada()
                     {
                         Email = App.Email,
+                        JWT = JWT,
                         Lat = results.Latitude,
                         Lng = results.Longitude
                     };
@@ -62,6 +65,7 @@ namespace WappoMobile.Views
                         Coordenada coord = new Coordenada()
                         {
                             Email = App.Email,
+                            JWT = JWT,
                             Lat = loc.Latitude,
                             Lng = loc.Longitude
                         };
